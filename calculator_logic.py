@@ -1,7 +1,7 @@
 ## calc logic
 
 
-		def add_to_expression(self, value):
+    def add_to_expression(self, value):
         self.equation += str(value)
         self.update_equation_label()
 
