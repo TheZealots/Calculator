@@ -38,7 +38,20 @@
             self.equation = "".join(self.list1[:-1])
             self.update_equation_label()
         else:
-            self.ans = self.answer            
+            self.ans = self.answer      
+     
+    def ans(self):
+        self.equation = self.equation + self.ans
+        self.update_answer_label()
+        self.update_equation_label()
+        
+    def update_equate_label(self):
+        equation = self.equation
+        for operator, symbol in self.operations.items():
+            equation = equation.replace(operator, f' {symbol} ')
+        self.equation_label.config(text = equation)
+        
+           
             
   
           
