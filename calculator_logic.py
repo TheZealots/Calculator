@@ -22,7 +22,7 @@
         self.update_equation_label()
         self.update_answer_label()
 
-  	def evaluate(self):   
+    def evaluate(self):   
         try:
             self.answer = str(eval(self.equation))
             self.ans = self.answer
