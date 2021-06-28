@@ -30,6 +30,15 @@
             self.answer = "Syntax Error!"
         finally:
             self.update_answer_label()
+
+    def delete(self):
+        if len(self.equation) != 0:
+            self.list1 = []
+            self.list1[:0] = self.equation
+            self.equation = "".join(self.list1[:-1])
+            self.update_equation_label()
+        else:
+            self.ans = self.answer            
             
   
           
