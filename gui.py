@@ -40,3 +40,48 @@ class Kalkyu:
         self.create_operator_buttons()
         self.create_special_buttons()
         self.bind_keys()
+    def create_special_buttons(self):
+        self.create_clear_button()
+        self.create_delete_button()
+        self.create_equal_button()
+        self.create_ans_button()
+        
+    def create_display_labels(self):
+        self.equation_label = tk.Label(self.display_frame, text=self.equation, anchor = tk.NW, bg = "#B4D6C1", fg = "#000000", padx = 10, font = ("Verdana", 15))
+        self.equation_label.pack(expand=True, fill='both')
+
+        self.answer_label = tk.Label(self.display_frame, text=self.answer, anchor = tk.E, bg = "#B4D6C1", fg = "#000000", padx = 10, font = ("Verdana", 25, 'bold'))
+        self.answer_label.pack(expand=True, fill='both')
+
+        return self.equation_label, self.answer_label
+
+    def create_display_frame(self):
+        frame = tk.Frame(self.window, height=221, bg="#FFFFFF")
+        frame.pack(expand=True, fill="both")
+        return frame
+
+    def create_operator_buttons(self):
+        index = 0
+        for operator, symbol in self.operations.items():
+            button = tk.Button(self.buttons_frame, text = symbol, bg = "#4E9C81", fg = "#FFEBD2", font = ("Verdana", 15, "bold"), borderwidth=0, command=lambda x=operator: self.append_operator(x))
+            button.grid(row=index, column=4, sticky=tk.NSEW)
+            index += 1
+
+    def create_number_buttons(self):
+        for number, coordinate in self.numbers.items():
+            button = tk.Button(self.buttons_frame, text = number, bg= "#358873", fg= "#FFEBD2", font = ("Verdana", 10, "bold"), borderwidth=0, command=lambda x=number: self.append_operator(x)) 
+            button.grid(row=coordinate[0], column=coordinate[1], sticky=tk.NSEW)
+
+    def create_buttons_frame(self):
+        frame = tk.Frame(self.window)
+        frame.pack(expand=True, fill="both")
+        return frame
+    
+    def bind_keys(self):
+        self.window.bind("<Return>", lambda event: self.evaluate())
+        for key in self.numbers:
+            self.window.bind(str(key), lambda event, digit=key: self.add_to_expression(digit))
+
+        for key in self.operations:
+            self.window.bind(key, lambda event, operator=key: self.append_operator(operator))
+
