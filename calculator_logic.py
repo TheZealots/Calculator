@@ -49,6 +49,13 @@
             equation = equation.replace(operator, f' {symbol} ')
         self.equation_label.config(text = equation)
         
+    def run(self):
+        self.window.mainloop()
+
+        
+if __name__ == "__main__":
+    calc = Kalkyu()
+    calc.run()   
            
             
   
