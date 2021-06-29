@@ -2,7 +2,6 @@
 import tkinter as tk
 
 
-
 class Kalkyu:
     def __init__(self):
         self.window = tk.Tk()
@@ -17,6 +16,14 @@ class Kalkyu:
 
         self.label = self.create_display_labels()
         
+
+        self.window.geometry("375x500")
+        self.window.resizable(True, True)
+        self.window.title("K")
+        self.equation = ""
+        self.answer = ""
+        self.display_frame = self.create_display_frame()
+        self.label = self.create_display_labels()
         self.numbers = {
             7: (1, 1), 8: (1, 2), 9: (1, 3),
             4: (2, 1), 5: (2, 2), 6: (2, 3),
