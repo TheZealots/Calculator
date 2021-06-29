@@ -11,7 +11,7 @@ class Kalkyu:
         self.window = tk.Tk()
         self.window.geometry("375x500")
         self.window.resizable(True, True)
-        self.window.title("K")
+        self.window.title("Kalkyu")
         self.equation = ""
         self.answer = ""
         self.display_frame = self.create_display_frame()
