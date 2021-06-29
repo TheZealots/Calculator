@@ -15,7 +15,17 @@
         self.answer = ""
         self.update_equation_label()
         self.update_answer_label()
+    
+    def delete(self):
+        if len(self.equation) != 0:
+            self.list1 = []
+            self.list1[:0] = self.equation
+            self.equation = "".join(self.list1[:-1])
+            self.update_equation_label()
+        else:
+            self.ans = self.answer
 
+            
     def evaluate(self):   
         try:
             self.answer = str(eval(self.equation))
@@ -24,22 +34,16 @@
             self.answer = "Syntax Error!"
         finally:
             self.update_answer_label()
-
-    def delete(self):
-        if len(self.equation) != 0:
-            self.list1 = []
-            self.list1[:0] = self.equation
-            self.equation = "".join(self.list1[:-1])
-            self.update_equation_label()
-        else:
-            self.ans = self.answer      
      
     def ans(self):
         self.equation = self.equation + self.ans
         self.update_answer_label()
         self.update_equation_label()
-        
-    def update_equate_label(self):
+    
+    def update_answer_label(self):
+        self.answer_label.config(text=self.answer[:])
+    
+    def update_equation_label(self):
         equation = self.equation
         for operator, symbol in self.operations.items():
             equation = equation.replace(operator, f' {symbol} ')
