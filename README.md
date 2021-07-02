@@ -1,7 +1,6 @@
 # Calculator
 
-#Code Logic
-
+#Logic
 
 For this simple calculator, two numbers were taken and a defining function branching is used to execute a particular section.
 Every defining function has it's own function inside the function body, the return statement determines the value to be returned.
