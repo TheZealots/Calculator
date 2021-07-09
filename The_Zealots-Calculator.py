@@ -123,11 +123,8 @@ class Kalkyu:
             self.update_equation_label()
         else:
             self.ans = self.answer
-
-       
-
+            
     def evaluate(self):
-        
         try:
             self.answer = str(eval(self.equation))
             self.ans = self.answer
@@ -137,7 +134,6 @@ class Kalkyu:
             self.update_answer_label()
     
     def ans(self):
-        
         self.equation = self.equation + self.ans
         self.update_answer_label()
         self.update_equation_label()
